@@ -3,8 +3,7 @@
 CModule::AddAutoloadClasses(
 	'twigrix', [
 		'TwigTemplateEngine' => 'classes/general/templating/TwigTemplateEngine.php',
-		'BitrixTwigExtension' => 'classes/general/templating/BitrixTwigExtension.php',
-		'Twig_Autoloader' => 'vendor/Twig/Autoloader.php',
+		'BitrixTwigExtension' => 'classes/general/templating/BitrixTwigExtension.php'
 	]
 );
 
