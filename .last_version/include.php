@@ -1,5 +1,5 @@
 <?php
-//ïóòü âû÷èñëÿåòñÿ îòíîñèòåëüíî ïàïêè ñ ìîäóëåì twigrix
+//Ð¿ÑƒÑ‚ÑŒ Ð²Ñ‹Ñ‡Ð¸ÑÐ»ÑÐµÑ‚ÑÑ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¿Ð°Ð¿ÐºÐ¸ Ñ Ð¼Ð¾Ð´ÑƒÐ»ÐµÐ¼ twigrix
 CModule::AddAutoloadClasses(
 	'twigrix', [
 		'TwigTemplateEngine' => 'classes/general/templating/TwigTemplateEngine.php',

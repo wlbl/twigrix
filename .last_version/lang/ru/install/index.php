@@ -1,11 +1,11 @@
 <?php
-$MESS['TWIG_INTEGRATION_MODULE_NAME'] = "Twigrix (Twig-øàáëîíèçàöèÿ êîìïîíåíòîâ)";
-$MESS['TWIG_INTEGRATION_MODULE_DESC'] = "Ìîäóëü äëÿ ïîäêëþ÷åíèÿ øàáëîíèçàòîðà Twig, îñíîâàí íà https://github.com/HighTechnologiesCenter/twigrix";
+$MESS['TWIG_INTEGRATION_MODULE_NAME'] = "Twigrix (Twig-ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¸Ð·Ð°Ñ†Ð¸Ñ ÐºÐ¾Ð¼Ð¿Ð¾Ð½ÐµÐ½Ñ‚Ð¾Ð²)";
+$MESS['TWIG_INTEGRATION_MODULE_DESC'] = "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð´Ð»Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¸Ð·Ð°Ñ‚Ð¾Ñ€Ð° Twig, Ð¾ÑÐ½Ð¾Ð²Ð°Ð½ Ð½Ð° https://github.com/HighTechnologiesCenter/twigrix";
 
-$MESS['TWIG_INTEGRATION_INSTALL_TITLE'] = "Óñòàíîâêà ìîäóëÿ äëÿ ïîäêëþ÷åíèÿ øàáëîíèçàòîðà Twig";
-$MESS['TWIG_INTEGRATION_UNINSTALL_TITLE'] = "Óäàëåíèå ìîäóëÿ äëÿ ïîäêëþ÷åíèÿ øàáëîíèçàòîðà Twig";
+$MESS['TWIG_INTEGRATION_INSTALL_TITLE'] = "Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð¼Ð¾Ð´ÑƒÐ»Ñ Ð´Ð»Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¸Ð·Ð°Ñ‚Ð¾Ñ€Ð° Twig";
+$MESS['TWIG_INTEGRATION_UNINSTALL_TITLE'] = "Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ñ Ð´Ð»Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¸Ð·Ð°Ñ‚Ð¾Ñ€Ð° Twig";
 
-$MESS['TWIG_INTEGRATION_INSTALL_COMPLETED'] = "Çàâåðøåíà óñòàíîâêà ìîäóëÿ äëÿ ïîäêëþ÷åíèÿ øàáëîíèçàòîðà Twig";
-$MESS['TWIG_INTEGRATION_UNINSTALL_COMPLETED'] = "Ìîäóëü äëÿ ïîäêëþ÷åíèÿ øàáëîíèçàòîðà Twig óäàëåí èç ñèñòåìû";
+$MESS['TWIG_INTEGRATION_INSTALL_COMPLETED'] = "Ð—Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð° ÑƒÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð¼Ð¾Ð´ÑƒÐ»Ñ Ð´Ð»Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¸Ð·Ð°Ñ‚Ð¾Ñ€Ð° Twig";
+$MESS['TWIG_INTEGRATION_UNINSTALL_COMPLETED'] = "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð´Ð»Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¸Ð·Ð°Ñ‚Ð¾Ñ€Ð° Twig ÑƒÐ´Ð°Ð»ÐµÐ½ Ð¸Ð· ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹";
 $MESS['TWIG_INTEGRATION_MODULE_PARTNER'] = "White-Label Production";
 $MESS['TWIG_INTEGRATION_MODULE_URI'] = "http://wlbl.ru";

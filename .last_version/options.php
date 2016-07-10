@@ -159,7 +159,7 @@ if ($right >= "R") {
 <?php } ?>
 
 <?php
-//очистка кеша шаблонов
+//РѕС‡РёСЃС‚РєР° РєРµС€Р° С€Р°Р±Р»РѕРЅРѕРІ
 if ($_POST["clear_twig_cache"] === "y") {
 	TwigTemplateEngine::clearCacheFiles();
 }
