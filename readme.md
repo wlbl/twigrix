@@ -1,6 +1,7 @@
 # Twigrix
 
 Модуль подключения шаблонизатора Twig для Битрикс
+Основан на https://github.com/HighTechnologiesCenter/twigrix
 
 ## Установка
 
