@@ -1,0 +1,24 @@
+{
+	"name": "wlbl/twigrix",
+	"description": "Модуль для подключения шаблонизатора Twig",
+	"keywords": ["bitrix", "twig"],
+	"homepage": "http://wlbl.ru",
+	"type": "bitrix-module",
+	"license": "MIT",
+	"support": {
+		"email": "support@wlbl.ru",
+		"issues": "https://github.com/wlbl/twigrix/issues",
+		"source": "https://github.com/wlbl/twigrix"
+	},
+	"authors": [
+		{
+			"name": "Alexander Borisov",
+			"email": "borisov.a@wlbl.ru"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"composer/installers": "~1",
+		"twig/twig": "~1"
+	}
+}
