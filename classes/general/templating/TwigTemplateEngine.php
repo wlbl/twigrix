@@ -11,7 +11,6 @@ class TwigTemplateEngine
 
 	public static function initialize($templateRootPath, $cacheStoragePath)
 	{
-		Twig_Autoloader::register();
 
 		$debugModeOptionValue = COption::GetOptionString("twigrix", "debug_mode");
 		$debugMode = ($debugModeOptionValue == "Y") ? true : false;
@@ -36,7 +35,8 @@ class TwigTemplateEngine
 	}
 
 	/**
-	 * Добавляет расширения, в том числе расширение для битрикса, в котором добавляются нужные глобальные переменные и т.п.
+	 * Добавляет расширения, в том числе расширение для битрикса,
+	 * в котором добавляются нужные глобальные переменные и т.п.
 	 */
 	private static function addExtensions()
 	{

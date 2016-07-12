@@ -1,18 +1,15 @@
 <?php
-global $MESS;
-$strPath2Lang = str_replace("\\", "/", __FILE__);
-$strPath2Lang = substr($strPath2Lang, 0, strlen($strPath2Lang) - 18);
-include(GetLangFileName($strPath2Lang . "/lang/", "/install/index.php"));
+IncludeModuleLangFile(__FILE__);
 
 class twigrix extends CModule
 {
-	var $MODULE_ID = "twigrix";
+	public $MODULE_ID = "twigrix";
 	public $MODULE_VERSION;
 	public $MODULE_VERSION_DATE;
 	public $MODULE_NAME;
 	public $MODULE_DESCRIPTION;
 
-	public function twigrix()
+	public function __construct()
 	{
 		$arModuleVersion = [];
 
