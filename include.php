@@ -1,7 +1,8 @@
 <?php
 //путь вычисляется относительно папки с модулем twigrix
 CModule::AddAutoloadClasses(
-	'twigrix', [
+	'twigrix',
+	[
 		'TwigTemplateEngine' => 'classes/general/templating/TwigTemplateEngine.php',
 		'BitrixTwigExtension' => 'classes/general/templating/BitrixTwigExtension.php'
 	]
