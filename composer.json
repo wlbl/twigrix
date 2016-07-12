@@ -16,6 +16,11 @@
 			"email": "borisov.a@wlbl.ru"
 		}
 	],
+	"autoload": {
+		"files": [
+			"tools/autoload.php"
+		]
+	},
 	"require": {
 		"php": ">=5.4.0",
 		"composer/installers": "~1",
