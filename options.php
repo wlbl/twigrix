@@ -1,6 +1,6 @@
 <?php
 CJSCore::Init(["jquery"]);
-$moduleId = "twigrix";
+$moduleId = "wlbl.twigrix";
 $right = $APPLICATION->GetGroupRight($moduleId);
 if ($right >= "R") {
 	IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"] . BX_ROOT . "/modules/main/options.php");
@@ -37,7 +37,7 @@ if ($right >= "R") {
 		check_bitrix_sessid()
 	) {
 		if (strlen($RestoreDefaults) > 0) {
-			COption::RemoveOption("twigrix");
+			COption::RemoveOption("wlbl.twigrix");
 		} else {
 			foreach ($allOptions as $option) {
 				$name = $option[0];
@@ -45,7 +45,7 @@ if ($right >= "R") {
 				if ($option[2][0] == "checkbox" && $value != "Y") {
 					$value = "N";
 				}
-				COption::SetOptionString("twigrix", $name, $value, $option[1]);
+				COption::SetOptionString("wlbl.twigrix", $name, $value, $option[1]);
 			}
 		}
 		ob_start();
@@ -77,7 +77,7 @@ if ($right >= "R") {
 		$tabControl->BeginNextTab();
 		$notes = [];
 		foreach ($allOptions as $option):
-			$value = COption::GetOptionString("twigrix", $option[0]);
+			$value = COption::GetOptionString("wlbl.twigrix", $option[0]);
 			$type = $option[2];
 			if (isset($option[3])) {
 				$notes[] = $option[3];

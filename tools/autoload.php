@@ -1,2 +1,2 @@
 <?php
-\Bitrix\Main\Loader::includeModule('twigrix');
+\Bitrix\Main\Loader::includeModule('wlbl.twigrix');

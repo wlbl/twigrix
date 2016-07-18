@@ -1,7 +1,7 @@
 <?php
 //путь вычисляется относительно папки с модулем twigrix
 CModule::AddAutoloadClasses(
-	'twigrix',
+	'wlbl.twigrix',
 	[
 		'TwigTemplateEngine' => 'classes/general/templating/TwigTemplateEngine.php',
 		'BitrixTwigExtension' => 'classes/general/templating/BitrixTwigExtension.php'
@@ -10,7 +10,7 @@ CModule::AddAutoloadClasses(
 
 // Initialize Twig template engine
 $documentRoot = $_SERVER['DOCUMENT_ROOT'];
-$cacheStoragePathOption = COption::GetOptionString("twigrix", "cache_storage_path");
+$cacheStoragePathOption = COption::GetOptionString("wlbl.twigrix", "cache_storage_path");
 
 if ($cacheStoragePathOption == "") {
 	$cacheStoragePath = $documentRoot . BX_PERSONAL_ROOT . "/cache/twig";

@@ -12,7 +12,7 @@ class TwigTemplateEngine
 	public static function initialize($templateRootPath, $cacheStoragePath)
 	{
 
-		$debugModeOptionValue = COption::GetOptionString("twigrix", "debug_mode");
+		$debugModeOptionValue = COption::GetOptionString("wlbl.twigrix", "debug_mode");
 		$debugMode = ($debugModeOptionValue == "Y") ? true : false;
 
 		$loader = new Twig_Loader_Filesystem($templateRootPath);

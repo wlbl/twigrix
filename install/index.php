@@ -1,9 +1,9 @@
 <?php
 IncludeModuleLangFile(__FILE__);
 
-class twigrix extends CModule
+class wlbl_twigrix extends CModule
 {
-	public $MODULE_ID = "twigrix";
+	public $MODULE_ID = "wlbl.twigrix";
 	public $MODULE_VERSION;
 	public $MODULE_VERSION_DATE;
 	public $MODULE_NAME;
@@ -31,13 +31,13 @@ class twigrix extends CModule
 	public function DoInstall()
 	{
 		global $APPLICATION;
-		RegisterModule("twigrix");
+		RegisterModule("wlbl.twigrix");
 	}
 
 	public function DoUninstall()
 	{
 		global $APPLICATION;
-		UnRegisterModule("twigrix");
+		UnRegisterModule("wlbl.twigrix");
 	}
 
 	/**

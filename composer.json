@@ -3,7 +3,7 @@
 	"description": "Модуль для подключения шаблонизатора Twig",
 	"keywords": ["bitrix", "twig"],
 	"homepage": "http://wlbl.ru",
-	"type": "bitrix-module",
+	"type": "bitrix-d7-module",
 	"license": "MIT",
 	"support": {
 		"email": "support@wlbl.ru",
