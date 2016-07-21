@@ -1,12 +1,7 @@
 <?php
-//путь вычисляется относительно папки с модулем twigrix
-CModule::AddAutoloadClasses(
-	'wlbl.twigrix',
-	[
-		'TwigTemplateEngine' => 'classes/general/templating/TwigTemplateEngine.php',
-		'BitrixTwigExtension' => 'classes/general/templating/BitrixTwigExtension.php'
-	]
-);
+use Wlbl\Twigrix\TemplateEngine;
+
+require_once 'tools/renderTwigTemplate.php';
 
 // Initialize Twig template engine
 $documentRoot = $_SERVER['DOCUMENT_ROOT'];
@@ -18,4 +13,4 @@ if ($cacheStoragePathOption == "") {
 	$cacheStoragePath = $documentRoot . $cacheStoragePathOption;
 }
 
-TwigTemplateEngine::initialize($documentRoot, $cacheStoragePath);
+TemplateEngine::initialize($documentRoot, $cacheStoragePath);

@@ -1,6 +1,7 @@
 <?php
+namespace Wlbl\Twigrix;
 
-class BitrixTwigExtension extends Twig_Extension
+class BitrixExtension extends \Twig_Extension
 {
 	const DEFAULT_TEMPLATE_PATH = "/bitrix/templates/.default";
 
@@ -34,64 +35,13 @@ class BitrixTwigExtension extends Twig_Extension
 	public function getFunctions()
 	{
 		return [
-			new Twig_SimpleFunction(
-				'ShowMessage',
-				[
-					$this,
-					'showMessage'
-				],
-				['message']
-			),
-			new Twig_SimpleFunction(
-				'bitrix_sessid_post',
-				[
-					$this,
-					'bitrix_sessid_post'
-				]
-			),
-			new Twig_SimpleFunction(
-				'bitrix_sessid_get',
-				[
-					$this,
-					'bitrix_sessid_get'
-				]
-			),
-			new Twig_SimpleFunction(
-				'ShowError',
-				[
-					$this,
-					'showError'
-				],
-				[
-					'message',
-					'css_class'
-				]
-			),
-			new Twig_SimpleFunction(
-				'ShowNote',
-				[
-					$this,
-					'showNote'
-				],
-				[
-					'message',
-					'css_class'
-				]
-			),
-			new Twig_SimpleFunction(
-				'IsUserAdmin',
-				[
-					$this,
-					'isUserAdmin'
-				]
-			),
-			new Twig_SimpleFunction(
-				'IsUserAuthorized',
-				[
-					$this,
-					'isUserAuthorized'
-				]
-			),
+			new \Twig_SimpleFunction('ShowMessage', [$this, 'showMessage'], ['message']),
+			new \Twig_SimpleFunction('bitrix_sessid_post', [$this, 'bitrix_sessid_post']),
+			new \Twig_SimpleFunction('bitrix_sessid_get', [$this, 'bitrix_sessid_get']),
+			new \Twig_SimpleFunction('ShowError', [$this, 'showError'], ['message', 'css_class']),
+			new \Twig_SimpleFunction('ShowNote', [$this, 'showNote'], ['message', 'css_class']),
+			new \Twig_SimpleFunction('IsUserAdmin', [$this, 'isUserAdmin']),
+			new \Twig_SimpleFunction('IsUserAuthorized', [$this, 'isUserAuthorized']),
 		];
 	}
 
@@ -102,29 +52,8 @@ class BitrixTwigExtension extends Twig_Extension
 	public function getFilters()
 	{
 		return [
-			new Twig_SimpleFilter(
-				'formatDate',
-				[
-					$this,
-					'formatDate'
-				],
-				[
-					'rawDate',
-					'format'
-				]
-			),
-			new Twig_SimpleFilter(
-				'russianPluralForm',
-				[
-					$this,
-					'russianPluralForm'
-				],
-				[
-					'string',
-					'count',
-					'delimiter'
-				]
-			),
+			new \Twig_SimpleFilter('formatDate', [$this, 'formatDate'], ['rawDate', 'format']),
+			new \Twig_SimpleFilter('russianPluralForm', [$this, 'russianPluralForm'], ['string', 'count', 'delimiter']),
 		];
 	}
 
@@ -184,6 +113,7 @@ class BitrixTwigExtension extends Twig_Extension
 	public function russianPluralForm($string, $count, $delimiter = "|")
 	{
 		list($endWith1, $endWith2to4, $endWith5to9and0) = explode($delimiter, $string);
+
 		if (strlen($count) > 1 && substr($count, strlen($count) - 2, 1) == "1") {
 			return $endWith5to9and0;
 		} else {

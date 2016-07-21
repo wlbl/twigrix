@@ -1,22 +1,23 @@
 <?php
+namespace Wlbl\Twigrix;
 
-class TwigTemplateEngine
+class TemplateEngine
 {
 	/**
 	 * Окружение twig
 	 *
-	 * @var Twig_Environment
+	 * @var \Twig_Environment
 	 */
 	private static $twigEnvironment;
 
 	public static function initialize($templateRootPath, $cacheStoragePath)
 	{
 
-		$debugModeOptionValue = COption::GetOptionString("wlbl.twigrix", "debug_mode");
+		$debugModeOptionValue = \COption::GetOptionString("wlbl.twigrix", "debug_mode");
 		$debugMode = ($debugModeOptionValue == "Y") ? true : false;
 
-		$loader = new Twig_Loader_Filesystem($templateRootPath);
-		self::$twigEnvironment = new Twig_Environment(
+		$loader = new \Twig_Loader_Filesystem($templateRootPath);
+		self::$twigEnvironment = new \Twig_Environment(
 			$loader,
 			[
 				'autoescape' => false,
@@ -40,8 +41,8 @@ class TwigTemplateEngine
 	 */
 	private static function addExtensions()
 	{
-		self::$twigEnvironment->addExtension(new Twig_Extension_Debug());
-		self::$twigEnvironment->addExtension(new BitrixTwigExtension());
+		self::$twigEnvironment->addExtension(new \Twig_Extension_Debug());
+		self::$twigEnvironment->addExtension(new BitrixExtension());
 	}
 
 	/**
@@ -62,35 +63,5 @@ class TwigTemplateEngine
 	public static function clearCacheFiles()
 	{
 		self::$twigEnvironment->clearCacheFiles();
-	}
-}
-
-function renderTwigTemplate(
-	$templateFile, $arResult, $arParams, $arLangMessages, $templateFolder, $parentTemplateFolder, $template
-) {
-	echo TwigTemplateEngine::renderTemplate(
-		$templateFile,
-		[
-			'params' => $arParams,
-			'result' => $arResult,
-			'langMessages' => $arLangMessages,
-			'template' => $template,
-			'templateFolder' => $templateFolder,
-			'parentTemplateFolder' => $parentTemplateFolder,
-		]
-	);
-	$component_epilog = $templateFolder . "/component_epilog.php";
-
-	if (file_exists($_SERVER["DOCUMENT_ROOT"] . $component_epilog)) {
-		$component = $template->__component;
-		$component->SetTemplateEpilog(
-			[
-				"epilogFile" => $component_epilog,
-				"templateName" => $template->__name,
-				"templateFile" => $template->__file,
-				"templateFolder" => $template->__folder,
-				"templateData" => false,
-			]
-		);
 	}
 }

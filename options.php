@@ -1,4 +1,8 @@
 <?php
+use Wlbl\Twigrix\TemplateEngine;
+
+global $APPLICATION;
+
 CJSCore::Init(["jquery"]);
 $moduleId = "wlbl.twigrix";
 $right = $APPLICATION->GetGroupRight($moduleId);
@@ -161,7 +165,7 @@ if ($right >= "R") {
 <?php
 //очистка кеша шаблонов
 if ($_POST["clear_twig_cache"] === "y") {
-	TwigTemplateEngine::clearCacheFiles();
+	TemplateEngine::clearCacheFiles();
 }
 ?>
 
