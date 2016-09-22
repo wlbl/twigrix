@@ -1,6 +1,10 @@
 <?php
 namespace Wlbl\Twigrix;
 
+use Bitrix\Main\Application;
+use Bitrix\Main\Event;
+use Bitrix\Main\EventResult;
+
 class TemplateEngine
 {
 	/**
@@ -8,16 +12,35 @@ class TemplateEngine
 	 *
 	 * @var \Twig_Environment
 	 */
-	private static $twigEnvironment;
+	private $environment;
 
-	public static function initialize($templateRootPath, $cacheStoragePath)
+	private static $instance = null;
+
+	/**
+	 * @return \Twig_Environment
+	 */
+	public function getEnvironment()
 	{
+		return $this->environment;
+	}
+
+	private function __construct()
+	{
+		// Initialize Twig template engine
+		$documentRoot = Application::getDocumentRoot();
+		$cacheStoragePathOption = \COption::GetOptionString("wlbl.twigrix", "cache_storage_path");
+
+		if ($cacheStoragePathOption == "") {
+			$cacheStoragePath = $documentRoot . BX_PERSONAL_ROOT . "/cache/twig";
+		} else {
+			$cacheStoragePath = $documentRoot . $cacheStoragePathOption;
+		}
 
 		$debugModeOptionValue = \COption::GetOptionString("wlbl.twigrix", "debug_mode");
 		$debugMode = ($debugModeOptionValue == "Y") ? true : false;
 
-		$loader = new \Twig_Loader_Filesystem($templateRootPath);
-		self::$twigEnvironment = new \Twig_Environment(
+		$loader = new \Twig_Loader_Filesystem($documentRoot);
+		$this->environment = new \Twig_Environment(
 			$loader,
 			[
 				'autoescape' => false,
@@ -26,23 +49,32 @@ class TemplateEngine
 			]
 		);
 
-		self::addExtensions();
+		$this->addExtensions();
 
-		global $arCustomTemplateEngines;
-		$arCustomTemplateEngines["twig"] = [
-			"templateExt" => ["twig"],
-			"function" => "renderTwigTemplate"
-		];
+		self::$instance = $this;
 	}
 
 	/**
 	 * Добавляет расширения, в том числе расширение для битрикса,
 	 * в котором добавляются нужные глобальные переменные и т.п.
 	 */
-	private static function addExtensions()
+	private function addExtensions()
 	{
-		self::$twigEnvironment->addExtension(new \Twig_Extension_Debug());
-		self::$twigEnvironment->addExtension(new BitrixExtension());
+		$this->getEnvironment()->addExtension(new \Twig_Extension_Debug());
+		$this->getEnvironment()->addExtension(new BitrixExtension());
+
+		$event = new Event('wlbl.twigrix', 'onAddExtensions');
+		$event->send();
+
+		foreach ($event->getResults() as $result) {
+			if ($result->getType() == EventResult::SUCCESS) {
+				foreach ($result->getParameters() as $extension) {
+					if ($extension instanceof \Twig_Extension) {
+						$this->getEnvironment()->addExtension($extension);
+					}
+				}
+			}
+		}
 	}
 
 	/**
@@ -52,16 +84,26 @@ class TemplateEngine
 	 * @param array $context
 	 * @return string
 	 */
-	public static function renderTemplate($templateFile, array $context)
+	public function renderTemplate($templateFile, array $context)
 	{
-		return self::$twigEnvironment->render($templateFile, $context);
+		return $this->getEnvironment()->render($templateFile, $context);
 	}
 
 	/**
 	 * Очистка кеша шаблонов
 	 */
-	public static function clearCacheFiles()
+	public function clearCacheFiles()
 	{
-		self::$twigEnvironment->clearCacheFiles();
+		$this->getEnvironment()->clearCacheFiles();
+	}
+
+	public static function getInstance()
+	{
+		if (!is_null(self::$instance)) {
+			return self::$instance;
+		}
+		self::$instance = new self();
+
+		return self::$instance;
 	}
 }

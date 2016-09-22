@@ -8,7 +8,7 @@ function renderTwigTemplate(
 	$parentTemplateFolder,
 	$template
 ) {
-	echo \Wlbl\Twigrix\TemplateEngine::renderTemplate(
+	echo \Wlbl\Twigrix\TemplateEngine::getInstance()->renderTemplate(
 		$templateFile,
 		[
 			'params' => $arParams,
