@@ -2,6 +2,7 @@
 namespace Wlbl\Twigrix;
 
 use Bitrix\Main\Application;
+use Bitrix\Main\Context;
 use Bitrix\Main\Event;
 use Bitrix\Main\EventResult;
 
@@ -35,6 +36,7 @@ class TemplateEngine
 		} else {
 			$cacheStoragePath = $documentRoot . $cacheStoragePathOption;
 		}
+		$cacheStoragePath .= "/" . Context::getCurrent()->getSite();
 
 		$debugModeOptionValue = \COption::GetOptionString("wlbl.twigrix", "debug_mode");
 		$debugMode = ($debugModeOptionValue == "Y") ? true : false;
