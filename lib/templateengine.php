@@ -2,6 +2,7 @@
 namespace Wlbl\Twigrix;
 
 use Bitrix\Main\Application;
+use Bitrix\Main\Config\Configuration;
 use Bitrix\Main\Context;
 use Bitrix\Main\Event;
 use Bitrix\Main\EventResult;
@@ -28,18 +29,26 @@ class TemplateEngine
 	private function __construct()
 	{
 		// Initialize Twig template engine
-		$documentRoot = Application::getDocumentRoot();
-		$cacheStoragePathOption = \COption::GetOptionString("wlbl.twigrix", "cache_storage_path");
+		$options = [
+			'cache_dir' => '',
+			'use_site_id_in_cache' => false,
+			'debug' => false,
+		];
 
-		if ($cacheStoragePathOption == "") {
+		$options = array_replace($options, Configuration::getValue('wlbl.twigrix'));
+
+		$documentRoot = Application::getDocumentRoot();
+		if (empty($options['cache_dir'])) {
 			$cacheStoragePath = $documentRoot . BX_PERSONAL_ROOT . "/cache/twig";
 		} else {
-			$cacheStoragePath = $documentRoot . $cacheStoragePathOption;
+			$cacheStoragePath = $documentRoot . $options['cache_dir'];
 		}
-		$cacheStoragePath .= "/" . Context::getCurrent()->getSite();
 
-		$debugModeOptionValue = \COption::GetOptionString("wlbl.twigrix", "debug_mode");
-		$debugMode = ($debugModeOptionValue == "Y") ? true : false;
+		if (boolval($options['use_site_id_in_cache'])) {
+			$cacheStoragePath .= "/" . Context::getCurrent()->getSite();
+		}
+
+		$debugMode = boolval($options['debug']);
 
 		$loader = new \Twig_Loader_Filesystem($documentRoot);
 		$this->environment = new \Twig_Environment(

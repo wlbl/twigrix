@@ -30,6 +30,8 @@ class wlbl_twigrix extends CModule
 
 	public function InstallDB()
 	{
+		// Значения в бд больше не используются
+		\COption::RemoveOption("wlbl.twigrix");
 		RegisterModule($this->MODULE_ID);
 
 		return true;
