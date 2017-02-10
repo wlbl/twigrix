@@ -28,23 +28,73 @@ class wlbl_twigrix extends CModule
 		$this->PARTNER_URI = GetMessage("TWIG_INTEGRATION_MODULE_URI");
 	}
 
+	public function InstallDB()
+	{
+		RegisterModule($this->MODULE_ID);
+
+		return true;
+	}
+
+	public function UnInstallDB()
+	{
+		UnRegisterModule($this->MODULE_ID);
+
+		return true;
+	}
+
+	public function InstallEvents()
+	{
+		$eventManager = \Bitrix\Main\EventManager::getInstance();
+
+		$eventManager->registerEventHandler(
+			'main',
+			'OnPageStart',
+			$this->MODULE_ID,
+			'\Wlbl\Twigrix\EventHandlers',
+			'onPageStart'
+		);
+
+		return true;
+	}
+
+	public function UnInstallEvents()
+	{
+		$eventManager = \Bitrix\Main\EventManager::getInstance();
+
+		$eventManager->unRegisterEventHandler(
+			'main',
+			'OnPageStart',
+			$this->MODULE_ID,
+			'\Wlbl\Twigrix\EventHandlers',
+			'onPageStart'
+		);
+
+		return true;
+	}
+
+	public function InstallFiles()
+	{
+		return true;
+	}
+
+	public function UnInstallFiles()
+	{
+		return true;
+	}
+
 	public function DoInstall()
 	{
-		global $APPLICATION;
-		RegisterModule("wlbl.twigrix");
+		if (!IsModuleInstalled($this->MODULE_ID)) {
+			$this->InstallDB();
+			$this->InstallEvents();
+			$this->InstallFiles();
+		}
 	}
 
 	public function DoUninstall()
 	{
-		global $APPLICATION;
-		UnRegisterModule("wlbl.twigrix");
-	}
-
-	/**
-	 * @return string
-	 */
-	public static function getDocumentRoot()
-	{
-		return @$_SERVER["DOCUMENT_ROOT"];
+		$this->UnInstallDB();
+		$this->UnInstallEvents();
+		$this->UnInstallFiles();
 	}
 }
