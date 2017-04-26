@@ -1,7 +1,7 @@
 <?php
 namespace Wlbl\Twigrix;
 
-class BitrixExtension extends \Twig_Extension
+class BitrixExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
 	const DEFAULT_TEMPLATE_PATH = "/bitrix/templates/.default";
 
